@@ -108,7 +108,7 @@ body {
 
 body {
   background-image: url("../img/body-bg.png");
-  background-color: #16181d;
+  background-color: #16181d !important;
   color: #a1abbd;
   font-family: "Comfortaa", Arial, "Helvetica Neue", Helvetica, serif, sans-serif;
   font-size: 16px;
