@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useState } from "react";
 import {
   Access,
   AddLiquidity,
@@ -8,48 +8,50 @@ import {
   Analytic,
   App,
   Footer,
-  FooterICON,
   Header,
-  HeaderICON,
   Hero,
   ICOSale,
   ICOTokens,
-  Input,
   LiquidityHistory,
   Loader,
-  NoPool,
-  PoolInput,
-  SuccessPool,
 } from "../components/liquidity";
-import { CONTEXT } from "../context";
 import type { NextPage } from "next";
+import { useLiquidityContext } from "~~/hooks/liquidity/useLiquidityContext";
 
 const Home: NextPage = () => {
-  const {
-    balance,
-    nativeToken,
-    tokenHolders,
-    tokenSale,
-    currentHolder,
-    loader,
-    DAPP_NAME,
-    trasnferNativeToken,
-    buyToken,
-    GET_POOL_ADDRESS,
-    CREATE_LIQUIDITY,
-    GET_ALL_LIQUIDITY,
-    LOAD_TOKEN,
-    notifyError,
-    notifySuccess,
-  } = useContext(CONTEXT);
-
   //mode state
   const [openAddPool, setOpenAddPool] = useState(false);
   const [openAllLiquidity, setOpenAllLiquidity] = useState(false);
-
+  const { loader } = useLiquidityContext();
   return (
     <div className="crumina-grid">
-      <Header setOpenAddPool={setOpenAddPool} />
+      <Header setOpenAddPool={setOpenAddPool} setOpenAllLiquidity={setOpenAllLiquidity} />
+      <div className="main-content-wrapper">
+        <Hero />
+        <ICOTokens />
+        <LiquidityHistory />
+        <App />
+        <Analytic />
+        <Access />
+        <ICOSale />
+      </div>
+
+      {openAddPool && (
+        <div className="new_center">
+          <AddPool setOpenAddPool={setOpenAddPool} />
+        </div>
+      )}
+      {openAllLiquidity && (
+        <div className="new_center">
+          <AddLiquidity setOpenAllLiquidity={setOpenAllLiquidity} />
+        </div>
+      )}
+      {loader && (
+        <div className="new_center">
+          <Loader />
+        </div>
+      )}
+      <Footer />
     </div>
   );
 };
