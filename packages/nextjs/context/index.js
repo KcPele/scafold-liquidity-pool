@@ -327,7 +327,7 @@ export const CONTEXT_Provider = ({ children }) => {
   };
 
   //native token transfer
-  const trasnferNativeToken = async () => {
+  const transferNativeToken = async () => {
     try {
       const TOKEN_SALE_ADDRESS = icoScaffoldContract.data.address;
       const TOKEN_AMOUNT = 2000;
@@ -382,7 +382,7 @@ export const CONTEXT_Provider = ({ children }) => {
         currentHolder,
         loader,
         DAPP_NAME,
-        trasnferNativeToken,
+        transferNativeToken,
         buyToken,
         GET_POOL_ADDRESS,
         CREATE_LIQUIDITY,
@@ -396,5 +396,3 @@ export const CONTEXT_Provider = ({ children }) => {
     </CONTEXT.Provider>
   );
 };
-
-
