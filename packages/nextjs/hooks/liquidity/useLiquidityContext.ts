@@ -2,6 +2,9 @@ import React, { useContext } from "react";
 import { CONTEXT } from "~~/context";
 
 export const useLiquidityContext = () => {
+  if (CONTEXT === null) {
+    throw new Error("app must be wrapped with context");
+  }
   const {
     balance,
     nativeToken,
