@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import { CONTEXT } from "~~/context";
+import { IContext } from "~~/types/utils";
 
 export const useLiquidityContext = () => {
-  if (CONTEXT === null) {
+  if (CONTEXT == null) {
     throw new Error("app must be wrapped with context");
   }
   const {
@@ -21,7 +22,7 @@ export const useLiquidityContext = () => {
     LOAD_TOKEN,
     notifyError,
     notifySuccess,
-  } = useContext(CONTEXT);
+  } = useContext(CONTEXT) as IContext;
   return {
     balance,
     nativeToken,

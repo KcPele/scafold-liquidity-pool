@@ -11,78 +11,12 @@ import { ethers } from "ethers";
 import toast from "react-hot-toast";
 import { useAccount, useNetwork } from "wagmi";
 import { useScaffoldContract } from "~~/hooks/scaffold-eth";
+import { IContext, ICurrentHolder, INativeToken, IToken, ITokensale } from "~~/types/utils";
 import { parseErrorMsg } from "~~/utils/liquidity";
 
-interface IToken {
-  name: string;
-  symbol: string;
-  address: string;
-  chainId: string;
-  supply: string;
-  balance: string;
-  decimals: number;
-}
-interface INativeToken {
-  tokenName: String;
-  tokenAddress: String;
-  tokenSymbol: String;
-  tokenHolders: String;
-  tokenOwnerOfContract: String;
-  tokenStandard: String;
-  tokenBalance: String;
-  tokenTotalSupply: String;
-}
-interface ILiquidity {
-  id: string;
-  network: string;
-  owner: string;
-  ppolAddress: string;
-  tokenA: string;
-  tokenB: string;
-  tokenA_Address: string;
-  tokenB_Address: string;
-  timeCreated: string;
-  transactionHash: string;
-}
-interface ITokensale {
-  tokenPrice: string;
-  tokenSold: string;
-  tokenSaleBalance: string;
-}
-interface ICurrentHolder {
-  tokenId: bigint | undefined;
-  from: string | undefined;
-  to: string | undefined;
-  totalToken: string;
-  tokenHolders: boolean | undefined;
-}
-interface IContext {
-  balance: String;
-  nativeToken: INativeToken;
-  tokenHolders: String[];
-  tokenSale: ITokensale;
-  currentHolder: ICurrentHolder;
-  loader: Boolean;
-  DAPP_NAME: String;
-  transferNativeToken: () => Promise<void>;
-  buyToken: (nToken: bigint) => Promise<void>;
-  GET_POOL_ADDRESS: (token_1: IToken, token_2: IToken, fee: string) => Promise<unknown>;
-  CREATE_LIQUIDITY: (
-    pool: {
-      token_A: IToken;
-      token_B: IToken;
-      poolAddress: any;
-    },
-    liquidityAmount: string,
-    approvedAmount: string,
-  ) => Promise<void>;
-  GET_ALL_LIQUIDITY: () => Promise<ILiquidity>;
-  LOAD_TOKEN: (tokenAddress: string) => Promise<IToken>;
-  notifyError: (msg: any) => string;
-  notifySuccess: (msg: any) => string;
-}
 export const CONTEXT = React.createContext<IContext | null>(null);
 export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) => {
+  const gasFee = BigInt("1000000");
   const { chain } = useNetwork();
   const { address } = useAccount();
   const DAPP_NAME = "Liquidity Dapp";
@@ -121,10 +55,11 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
     return {
       address: tokenDetails.address,
       name: tokenDetails.name,
+      totalSupply: tokenDetails.totalSupply.formatted,
       symbol: tokenDetails.symbol,
       decimals: tokenDetails.totalSupply.formatted,
       balance: balance.formatted,
-      chainId: chain?.id,
+      chainId: chain!.id,
     };
   };
 
@@ -143,7 +78,7 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
         network: token_1.chainId,
         poolAddress,
       };
-      const zeroAdd = "0xx0000000000000000000000000000000000000000";
+      const zeroAdd = "0x0000000000000000000000000000000000000000";
 
       if (poolAddress === zeroAdd) {
         notifySuccess("Sorry there is no pool");
@@ -199,14 +134,14 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
       const TOKEN_1 = new Token(
         Number(pool.token_A.chainId),
         pool.token_A.address,
-        pool.token_A.decimals,
+        Number(pool.token_A.decimals),
         pool.token_A.symbol,
         pool.token_A.name,
       );
       const TOKEN_2 = new Token(
         Number(pool.token_B.chainId),
         pool.token_B.address,
-        pool.token_B.decimals,
+        Number(pool.token_B.decimals),
         pool.token_B.symbol,
         pool.token_B.name,
       );
@@ -234,7 +169,7 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
 
       const position = new Position({
         pool: TOKEN_1_TOKEN_2_POOL,
-        liquidity: ethers.utils.parseUnits(liquidityAmount, pool.token_A.decimals),
+        liquidity: ethers.utils.parseUnits(liquidityAmount, pool.token_A.decimals).toString(),
         tickLower: nearestUsableTick(poolData.tick, poolData.tickSpacing) - poolData.tickSpacing * 2,
         tickUpper: nearestUsableTick(poolData.tick, poolData.tickSpacing) + poolData.tickSpacing * 2,
       });
@@ -267,11 +202,11 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
         recipient: address,
         deadline: Math.floor(Date.now() / 1000) + 60 * 10,
       };
-      const transactionHash = await nonfundablePositionManagerContract.simulate
+      const transactionHash = (await nonfundablePositionManagerContract.simulate
         .mint([params], {
-          gas: BigInt("1000000"),
+          gas: gasFee,
         })
-        .then(res => res?.hash);
+        .then(res => res?.result)) as string;
 
       if (transactionHash) {
         const addLiquidityData = await liquidityContract.data?.simulate.addLiquidity([
@@ -383,7 +318,7 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
       const amount = ethers.utils.parseEther(price.toString());
 
       const buying = await icoScaffoldContract.data?.simulate.buyTokens([nToken], {
-        gas: BigInt("1000000"),
+        gas: gasFee,
       });
 
       await buying?.result;
@@ -405,7 +340,7 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
       const trascation = await scaffoldContract.data?.simulate.transfer(
         [TOKEN_SALE_ADDRESS, transferAmount.toBigInt()],
         {
-          gas: BigInt("1000000"),
+          gas: gasFee,
         },
       );
       await trascation?.result;
