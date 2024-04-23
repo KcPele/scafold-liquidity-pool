@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
 import ERC20ABI from "./abi.json";
-import { FACTORY_ABI, FACTORY_ADDRESS, positionManagerAddress } from "./constants";
+import {
+  CONNECTION_CONTRACT,
+  FACTORY_ABI,
+  FACTORY_ADDRESS,
+  internalContract,
+  positionManagerAddress,
+} from "./constants";
 import { Token } from "@uniswap/sdk-core";
 import UniswapV3Pool from "@uniswap/v3-core/artifacts/contracts/UniswapV3Pool.sol/UniswapV3Pool.json";
 import { abi as IUniswapV3PoolABI } from "@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json";
 import { abi as INonfungiblePositionManagerABI } from "@uniswap/v3-periphery/artifacts/contracts/NonfungiblePositionManager.sol/NonfungiblePositionManager.json";
 import { Pool, Position, nearestUsableTick } from "@uniswap/v3-sdk";
-import { fetchBalance, fetchToken, getContract } from "@wagmi/core";
+import { fetchBalance, getContract } from "@wagmi/core";
 import { ethers } from "ethers";
 import toast from "react-hot-toast";
 import { useAccount, useNetwork } from "wagmi";
@@ -41,25 +47,22 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
   });
   //notification
   const notifyError = (msg: string) => toast.error(msg, { duration: 4000 });
-  const notifySuccess = (msg: string) => toast.error(msg, { duration: 4000 });
+  const notifySuccess = (msg: string) => toast.success(msg, { duration: 4000 });
 
   //load tokens
   const LOAD_TOKEN = async (tokenAddress: string) => {
-    const balance = await fetchBalance({
-      address: address as string,
-      token: tokenAddress,
-    });
-    const tokenDetails = await fetchToken({
-      address: tokenAddress,
-    });
+    const tokenDetails = await CONNECTION_CONTRACT(tokenAddress);
+    if (!tokenDetails) {
+      return;
+    }
     return {
       address: tokenDetails.address,
       name: tokenDetails.name,
-      totalSupply: tokenDetails.totalSupply.formatted,
+      totalSupply: tokenDetails.totalSupply,
       symbol: tokenDetails.symbol,
-      decimals: tokenDetails.totalSupply.formatted,
-      balance: balance.formatted,
-      chainId: chain!.id,
+      decimals: tokenDetails.decimals,
+      balance: tokenDetails.balance,
+      chainId: tokenDetails.chainId,
     };
   };
 
@@ -67,11 +70,8 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
   const GET_POOL_ADDRESS = async (token_1: IToken, token_2: IToken, fee: string) => {
     try {
       setLoader(true);
-      const contract = getContract({
-        address: FACTORY_ADDRESS,
-        abi: FACTORY_ABI,
-      });
-      const poolAddress = await contract.read?.getPool([token_1.address, token_2.address, Number(fee)]);
+      const contract = await internalContract(FACTORY_ABI, FACTORY_ADDRESS);
+      const poolAddress = (await contract?.getPool(token_1.address, token_2.address, Number(fee))) as string;
       const poolHistory = {
         token_A: token_1,
         token_B: token_2,
@@ -81,6 +81,7 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
       const zeroAdd = "0x0000000000000000000000000000000000000000";
 
       if (poolAddress === zeroAdd) {
+        setLoader(false);
         notifySuccess("Sorry there is no pool");
       } else {
         let poolArray = [];
@@ -275,7 +276,7 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
 
       //getting token holder data
       if (address) {
-        const getTokenHolderData = await scaffoldContract.data?.read.getTokenHolderData([address]);
+        const getTokenHolderData = (await scaffoldContract.data?.read.getTokenHolderData([address])) as any;
         const currentHolder = {
           tokenId: getTokenHolderData?._tokenId,
           from: getTokenHolderData?._from,
@@ -359,9 +360,8 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
       if (!address) {
         throw new Error("Connect address");
       }
-      const liqquidityHistory = await liquidityContract?.data?.read.getAllLiquidity([address]);
-
-      const AllLiquidity = liqquidityHistory?.map(liquidity => {
+      const liquidityHistory = (await liquidityContract?.data?.read.getAllLiquidity([address])) as [];
+      const AllLiquidity = liquidityHistory?.map((liquidity: any) => {
         const liquidityArray = {
           id: liquidity.id.toString(),
           network: liquidity.network,

@@ -55,7 +55,7 @@ export interface IContext {
   DAPP_NAME: String;
   transferNativeToken: () => Promise<void>;
   buyToken: (nToken: bigint) => Promise<void>;
-  GET_POOL_ADDRESS: (token_1: IToken, token_2: IToken, fee: string) => Promise<unknown>;
+  GET_POOL_ADDRESS: (token_1: IToken, token_2: IToken, fee: string) => Promise<string | undefined>;
   CREATE_LIQUIDITY: (
     pool: {
       token_A: IToken;
@@ -66,7 +66,7 @@ export interface IContext {
     approvedAmount: string,
   ) => Promise<void>;
   GET_ALL_LIQUIDITY: () => Promise<ILiquidity[] | undefined>;
-  LOAD_TOKEN: (tokenAddress: string) => Promise<IToken>;
+  LOAD_TOKEN: (tokenAddress: string) => Promise<IToken | undefined>;
   notifyError: (msg: any) => string;
   notifySuccess: (msg: any) => string;
 }
