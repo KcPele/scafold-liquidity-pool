@@ -41,16 +41,16 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
       deployedContracts["31337"].Liquidity.abi,
       deployedContracts["31337"].Liquidity.address,
     );
-  }, [chain?.id]);
+  }, [deployedContracts]);
   const scaffoldContract = useCallback(async () => {
     return await internalContract(deployedContracts["31337"].Scaffold.abi, deployedContracts["31337"].Scaffold.address);
-  }, [chain?.id]);
+  }, [deployedContracts]);
   const icoScaffoldContract = useCallback(async () => {
     return await internalContract(
       deployedContracts["31337"].ICOScaffold.abi,
       deployedContracts["31337"].ICOScaffold.address,
     );
-  }, [chain?.id]);
+  }, [deployedContracts]);
   //notification
   const notifyError = (msg: string) => toast.error(msg, { duration: 4000 });
   const notifySuccess = (msg: string) => toast.success(msg, { duration: 4000 });
