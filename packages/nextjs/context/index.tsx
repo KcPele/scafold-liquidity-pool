@@ -8,7 +8,7 @@ import {
   positionManagerAddress,
 } from "./constants";
 import { Token } from "@uniswap/sdk-core";
-import UniswapV3Pool from "@uniswap/v3-core/artifacts/contracts/UniswapV3Pool.sol/UniswapV3Pool.json";
+// import UniswapV3Pool from "@uniswap/v3-core/artifacts/contracts/UniswapV3Pool.sol/UniswapV3Pool.json";
 import { abi as IUniswapV3PoolABI } from "@uniswap/v3-core/artifacts/contracts/interfaces/IUniswapV3Pool.sol/IUniswapV3Pool.json";
 import { abi as INonfungiblePositionManagerABI } from "@uniswap/v3-periphery/artifacts/contracts/NonfungiblePositionManager.sol/NonfungiblePositionManager.json";
 import { Pool, Position, nearestUsableTick } from "@uniswap/v3-sdk";
@@ -309,7 +309,7 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
   };
   useEffect(() => {
     fetchInitailData();
-  }, []);
+  }, [fetchInitailData]);
 
   const buyToken = async (nToken: bigint) => {
     try {
@@ -317,7 +317,7 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
       const price = 0.0001 * Number(nToken);
       const amount = ethers.utils.parseEther(price.toString());
 
-      const buying = (await icoScaffoldContract())?.buyTokens(nToken, {
+      const buying = (await icoScaffoldContract())?.buyTokens(amount, {
         gas: gasFee,
       });
 
@@ -330,7 +330,7 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
     }
   };
 
-  //native token transfer
+  //Native token transfer
   const transferNativeToken = async () => {
     try {
       const TOKEN_SALE_ADDRESS = (await icoScaffoldContract())?.address as string;
