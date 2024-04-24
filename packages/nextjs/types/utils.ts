@@ -25,7 +25,7 @@ export interface ILiquidity {
   id: string;
   network: string;
   owner: string;
-  ppolAddress: string;
+  poolAddress: string;
   tokenA: string;
   tokenB: string;
   tokenA_Address: string;
@@ -56,17 +56,17 @@ export interface IContext {
   transferNativeToken: () => Promise<void>;
   buyToken: (nToken: bigint) => Promise<void>;
   GET_POOL_ADDRESS: (token_1: IToken, token_2: IToken, fee: string) => Promise<string | undefined>;
-  CREATE_LIQUIDITY: (
-    pool: {
-      token_A: IToken;
-      token_B: IToken;
-      poolAddress: any;
-    },
-    liquidityAmount: string,
-    approvedAmount: string,
-  ) => Promise<void>;
+  CREATE_LIQUIDITY: (pool: IPoolHistory, liquidityAmount: string, approvedAmount: string) => Promise<void>;
   GET_ALL_LIQUIDITY: () => Promise<ILiquidity[] | undefined>;
   LOAD_TOKEN: (tokenAddress: string) => Promise<IToken | undefined>;
   notifyError: (msg: any) => string;
   notifySuccess: (msg: any) => string;
+}
+
+export interface IPoolHistory {
+  token_A: IToken;
+  token_B: IToken;
+  network: number;
+  poolAddress: string;
+  fee: string;
 }

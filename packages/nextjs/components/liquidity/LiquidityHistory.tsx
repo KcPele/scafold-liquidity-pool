@@ -3,25 +3,28 @@ import Image from "next/image";
 import Link from "next/link";
 import { Address } from "../scaffold-eth";
 import { useLiquidityContext } from "~~/hooks/liquidity/useLiquidityContext";
+import { ILiquidity } from "~~/types/utils";
 
 const LiquidityHistory = () => {
   const { GET_ALL_LIQUIDITY } = useLiquidityContext();
   const [liquidity, setLiquidity] = useState([]);
   useEffect(() => {
-    try {
-      GET_ALL_LIQUIDITY().then((res: any) => {
-        setLiquidity(res.reverse());
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    let loadLiquidity = async () => {
+      try {
+        let liquidities = await GET_ALL_LIQUIDITY();
+        console.log(liquidities);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    loadLiquidity();
   }, []);
   return (
     <section>
       <div className="container">
         <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div className="mCustomScrollbar scrollable-responsive-table" data-mcs-theme="dark">
-            <table className="pricing-table-wrap-table-blurring">
+            <table className="pricing-tables-wrap-table-blurring">
               <thead>
                 <tr>
                   <th>#</th>

@@ -2,12 +2,15 @@ import erc20Abi from "./abi.json";
 import factoryAbi from "./factoryAbi.json";
 import { ContractInterface, ethers } from "ethers";
 import Web3Modal from "web3modal";
+import deployedContracts from "~~/contracts/deployedContracts";
 import { IToken } from "~~/types/utils";
 
 export const FACTORY_ABI = factoryAbi;
 export const FACTORY_ADDRESS = "0x1F98431c8aD98523631AE4a59f267346ea31F984";
 export const positionManagerAddress = "0xC36442b4a4522E871399CD717aBDD847Ab11FE88";
 export const ERC20ABI = erc20Abi;
+export const LIQUIDITY_ABI = deployedContracts["31337"].Liquidity.abi;
+export const LIQUIDITY_ADDRESS = deployedContracts["31337"].Liquidity.address;
 const fetchContract = (signer: ethers.providers.JsonRpcSigner, ABI: ContractInterface, Address: string) =>
   new ethers.Contract(Address, ABI, signer);
 export const web3Provider = async () => {
@@ -36,6 +39,7 @@ export const CONNECTION_CONTRACT = async (ADDRESS: string): Promise<IToken | und
     if (!provider) throw new Error("No provider");
     const network = await provider.getNetwork();
     const signer = provider.getSigner();
+
     const contract = fetchContract(signer, ERC20ABI, ADDRESS);
 
     //user address
