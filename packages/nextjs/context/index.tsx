@@ -30,7 +30,7 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
 
   const [balance, setBalance] = useState("");
   const [nativeToken, setNativeToken] = useState<INativeToken | null>(null);
-  const [tokenHolders, setTokenHolders] = useState<String[]>([]);
+  const [tokenHolders, setTokenHolders] = useState<string[]>([]);
   const [tokenSale, setTokenSale] = useState<ITokensale | null>(null);
 
   const [currentHolder, setCurrentHolder] = useState<ICurrentHolder | null>(null);
@@ -232,7 +232,7 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
   };
 
   //native token
-  const fetchInitailData = async () => {
+  const fetchInitailData = useCallback(async () => {
     if (!address) {
       return;
     }
@@ -245,7 +245,7 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
 
       //scaffold token contract
       let tokenBalance;
-      let scafContract = await scaffoldContract();
+      const scafContract = await scaffoldContract();
       if (address) {
         tokenBalance = scafContract?.balanceOf(address);
       } else {
@@ -288,7 +288,7 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
       }
 
       //token sale contract
-      let icoScafContract = await icoScaffoldContract();
+      const icoScafContract = await icoScaffoldContract();
       const tokenPrice = icoScafContract?.tokenPrice();
       const tokenSold = icoScafContract?.tokensSold();
       const tokenSaleBalance = scafContract?.balanceOf(icoScafContract?.address as string);
@@ -306,7 +306,7 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
       setLoader(false);
       notifyError(errorMsg);
     }
-  };
+  }, []);
   useEffect(() => {
     fetchInitailData();
   }, [fetchInitailData]);
