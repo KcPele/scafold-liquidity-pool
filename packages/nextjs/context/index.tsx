@@ -306,7 +306,7 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
       setLoader(false);
       notifyError(errorMsg);
     }
-  }, [address, chain?.id]);
+  }, [address, chain?.id, scaffoldContract, icoScaffoldContract]);
   useEffect(() => {
     fetchInitailData();
   }, [fetchInitailData]);
