@@ -7,7 +7,6 @@ import {
   AddPool,
   Analytic,
   App,
-  Footer,
   Header,
   Hero,
   ICOSale,
@@ -51,7 +50,6 @@ const Home: NextPage = () => {
           <Loader />
         </div>
       )}
-      <Footer />
     </div>
   );
 };

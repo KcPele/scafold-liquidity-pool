@@ -2,7 +2,6 @@ import React, { Dispatch, SetStateAction } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Address } from "../scaffold-eth";
-import HeaderICON from "./SVG/HeaderICON";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { useAccount } from "wagmi";
 
@@ -15,12 +14,11 @@ const Header = ({
 }) => {
   const { address } = useAccount();
   return (
-    <header className="header" id="site-header">
+    <header className="header " id="site-header">
       <div className="container">
         <div className="header-content-wrapper">
           <Link href="/">
-            <Image src="/img/logo-primary.png" alt="header" width="50" height="50" />
-            <HeaderICON />
+            <Image src="/thumbnail.jpg" alt="header" width="50" height="50" />
           </Link>
           <nav id="primary-menu" className="primary-menu">
             <ul className="primary-menu-menu">

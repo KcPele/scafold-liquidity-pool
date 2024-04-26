@@ -12,14 +12,14 @@ export interface IToken {
   decimals: string;
 }
 export interface INativeToken {
-  tokenName: String;
-  tokenAddress: String;
-  tokenSymbol: String;
-  tokenHolders: String;
-  tokenOwnerOfContract: String;
-  tokenStandard: String;
-  tokenBalance: String;
-  tokenTotalSupply: String;
+  tokenName: string;
+  tokenAddress: string;
+  tokenSymbol: string;
+  tokenHolders: string;
+  tokenOwnerOfContract: string;
+  tokenStandard: string;
+  tokenBalance: string;
+  tokenTotalSupply: string;
 }
 export interface ILiquidity {
   id: string;
@@ -46,15 +46,15 @@ export interface ICurrentHolder {
   tokenHolders: boolean | undefined;
 }
 export interface IContext {
-  balance: String;
+  balance: string;
   nativeToken: INativeToken | null;
-  tokenHolders: String[];
+  tokenHolders: string[];
   tokenSale: ITokensale | null;
   currentHolder: ICurrentHolder | null;
-  loader: Boolean;
-  DAPP_NAME: String;
+  loader: boolean;
+  DAPP_NAME: string;
   transferNativeToken: () => Promise<void>;
-  buyToken: (nToken: bigint) => Promise<void>;
+  buyToken: (nToken: string) => Promise<void>;
   GET_POOL_ADDRESS: (token_1: IToken, token_2: IToken, fee: string) => Promise<string | undefined>;
   CREATE_LIQUIDITY: (pool: IPoolHistory, liquidityAmount: string, approvedAmount: string) => Promise<void>;
   GET_ALL_LIQUIDITY: () => Promise<ILiquidity[] | undefined>;

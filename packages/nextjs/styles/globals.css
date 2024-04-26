@@ -11,6 +11,10 @@
 [data-theme] {
   background: oklch(var(--b2));
 }
+section,
+footer {
+  background-color: #16181d;
+}
 
 body {
   min-height: 100vh;

@@ -310,7 +310,7 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
     fetchInitailData();
   }, [fetchInitailData]);
 
-  const buyToken = async (nToken: bigint) => {
+  const buyToken = async (nToken: string) => {
     try {
       setLoader(true);
       const price = 0.0001 * Number(nToken);
@@ -332,6 +332,7 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
   //Native token transfer
   const transferNativeToken = async () => {
     try {
+      setLoader(true);
       const TOKEN_SALE_ADDRESS = (await icoScaffoldContract())?.address as string;
       const TOKEN_AMOUNT = 2000;
       const nTokens = TOKEN_AMOUNT.toString();
@@ -339,7 +340,8 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
       const trascation = (await scaffoldContract())?.transfer(TOKEN_SALE_ADDRESS, transferAmount.toBigInt(), {
         gas: gasFee,
       });
-      await trascation?.result;
+      await trascation.wait();
+      setLoader(false);
       window.location.reload();
     } catch (error: any) {
       const errorMsg = parseErrorMsg(error);

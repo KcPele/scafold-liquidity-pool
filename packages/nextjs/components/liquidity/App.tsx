@@ -9,8 +9,8 @@ const App = () => {
         <div className="row">
           <div className="col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <header className="crumina-module crumina-heading heading--h2 heading--with-decoration">
-              <div className="heading-sup-title">top-5 Cryptocurrency</div>
-              <h2 className="heading-title weight-normal">
+              <div className="heading-sup-title">Top-5 Cryptocurrency</div>
+              <h2 className="heading-title weight-normal md:text-4xl">
                 Statistic of currencies on <span className="weight-bold"> all your device</span>
               </h2>
               <div className="heading-text">

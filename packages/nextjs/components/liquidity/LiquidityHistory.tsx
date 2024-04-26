@@ -7,12 +7,15 @@ import { ILiquidity } from "~~/types/utils";
 
 const LiquidityHistory = () => {
   const { GET_ALL_LIQUIDITY } = useLiquidityContext();
-  const [liquidity, setLiquidity] = useState([]);
+  const [liquidity, setLiquidity] = useState<ILiquidity[]>([]);
   useEffect(() => {
-    let loadLiquidity = async () => {
+    const loadLiquidity = async () => {
       try {
-        let liquidities = await GET_ALL_LIQUIDITY();
+        const liquidities = await GET_ALL_LIQUIDITY();
         console.log(liquidities);
+        if (liquidities) {
+          setLiquidity(liquidities);
+        }
       } catch (error) {
         console.log(error);
       }
@@ -23,7 +26,7 @@ const LiquidityHistory = () => {
     <section>
       <div className="container">
         <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <div className="mCustomScrollbar scrollable-responsive-table" data-mcs-theme="dark">
+          <div className="mCustomScrollbar scrollable-responsive-table overflow-y" data-mcs-theme="dark">
             <table className="pricing-tables-wrap-table-blurring">
               <thead>
                 <tr>
