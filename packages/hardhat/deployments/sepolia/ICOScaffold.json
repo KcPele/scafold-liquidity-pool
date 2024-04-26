@@ -1,0 +1,187 @@
+{
+  "address": "0xD115f67d58fA742Be5dcB9A1E472fFc5dDc5E9B3",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract Scaffold",
+          "name": "_tokenContract",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_tokenPrice",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_buyer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "Sell",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_numberOfTokens",
+          "type": "uint256"
+        }
+      ],
+      "name": "buyTokens",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "endSale",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "tokenContract",
+      "outputs": [
+        {
+          "internalType": "contract Scaffold",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "tokenPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "tokensSold",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xb979e315117af7188fc17e85843cb76fb1631a6298cce06c67ba473553dfb8c6",
+  "receipt": {
+    "to": null,
+    "from": "0x4e212134392ec8a9058Ddc82fb937eBACBe7063D",
+    "contractAddress": "0xD115f67d58fA742Be5dcB9A1E472fFc5dDc5E9B3",
+    "transactionIndex": 21,
+    "gasUsed": "390246",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x31be4b9db1bee3df2fcb66cad0da62efb78d434c3c68afbaf10e7393490a27f8",
+    "transactionHash": "0xb979e315117af7188fc17e85843cb76fb1631a6298cce06c67ba473553dfb8c6",
+    "logs": [],
+    "blockNumber": 5772406,
+    "cumulativeGasUsed": "3225067",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0xC55cc887d0a11e6D8281B42d70b33643C0434c6E",
+    "100000000000000"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "6bfa71ed0eac90fc317a0ef41f61ae2f",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract Scaffold\",\"name\":\"_tokenContract\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_tokenPrice\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_buyer\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"Sell\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_numberOfTokens\",\"type\":\"uint256\"}],\"name\":\"buyTokens\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"endSale\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"tokenContract\",\"outputs\":[{\"internalType\":\"contract Scaffold\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"tokenPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"tokensSold\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/ICOScaffold.sol\":\"ICOScaffold\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/ICOScaffold.sol\":{\"content\":\"//SPDX-License-Identifier: MIT\\npragma solidity >=0.8.0 <0.9.0;\\nimport \\\"./Scaffold.sol\\\";\\ncontract ICOScaffold {\\n\\taddress admin;\\n\\tScaffold public tokenContract;\\n\\tuint256 public tokenPrice;\\n\\tuint256 public tokensSold;\\n\\n\\tevent Sell(address _buyer, uint256 _amount);\\n\\n\\tconstructor(Scaffold _tokenContract, uint256 _tokenPrice) {\\n\\t\\tadmin = msg.sender;\\n\\t\\ttokenContract = _tokenContract;\\n\\t\\ttokenPrice = _tokenPrice;\\n\\t}\\n\\n\\tfunction multiply(uint x, uint y) internal pure returns (uint z) {\\n\\t\\trequire(y == 0 || (z = x * y) / y == x);\\n\\t}\\n\\n\\tfunction buyTokens(uint256 _numberOfTokens) public payable {\\n\\t\\trequire(msg.value == multiply(_numberOfTokens, tokenPrice));\\n\\t\\trequire(tokenContract.balanceOf(address(this)) >= _numberOfTokens);\\n\\t\\trequire(\\n\\t\\t\\ttokenContract.transfer(\\n\\t\\t\\t\\tmsg.sender,\\n\\t\\t\\t\\t_numberOfTokens * 1000000000000000000\\n\\t\\t\\t)\\n\\t\\t);\\n\\n\\t\\ttokensSold += _numberOfTokens;\\n\\n\\t\\temit Sell(msg.sender, _numberOfTokens);\\n\\t}\\n\\tfunction endSale() public {\\n\\t\\trequire(msg.sender == admin);\\n\\t\\trequire(\\n\\t\\t\\ttokenContract.transfer(\\n\\t\\t\\t\\tadmin,\\n\\t\\t\\t\\ttokenContract.balanceOf(address(this))\\n\\t\\t\\t)\\n\\t\\t);\\n\\n\\t\\t// Just transfer the balance to the admin\\n\\t\\tpayable(admin).transfer(address(this).balance);\\n\\t}\\n}\\n\",\"keccak256\":\"0x7f19f5a6260adf39d5269272a1a108f29752bb8a6e317d1a4a209268aedd89de\",\"license\":\"MIT\"},\"contracts/Scaffold.sol\":{\"content\":\"//SPDX-License-Identifier: MIT\\npragma solidity >=0.8.0 <0.9.0;\\n\\ncontract Scaffold {\\n\\tstring public name = \\\"Scaffold\\\";\\n\\tstring public symbol = \\\"SFD\\\";\\n\\tstring public standard = \\\"Scaffold v.0.1\\\";\\n\\tuint256 public totalSupply;\\n\\taddress public ownerOfContract;\\n\\tuint256 public _userId;\\n\\n\\taddress[] public holderToken;\\n\\n\\tevent Transfer(address indexed _from, address indexed _to, uint256 _value);\\n\\tevent Approval(\\n\\t\\taddress indexed _owner,\\n\\t\\taddress indexed _spender,\\n\\t\\tuint256 _value\\n\\t);\\n\\n\\tmapping(address => TokenHolderInfo) public tokenHolderInfos;\\n\\tstruct TokenHolderInfo {\\n\\t\\tuint256 _tokenId;\\n\\t\\taddress _from;\\n\\t\\taddress _to;\\n\\t\\tuint256 _totalToken;\\n\\t\\tbool _tokenHolder;\\n\\t}\\n\\tmapping(address => uint256) public balanceOf;\\n\\tmapping(address => mapping(address => uint256)) public allowance;\\n\\n\\tconstructor(uint256 _initialSupply) {\\n\\t\\townerOfContract = msg.sender;\\n\\t\\tbalanceOf[msg.sender] = _initialSupply;\\n\\t\\ttotalSupply = _initialSupply;\\n\\t}\\n\\n\\tfunction inc() internal {\\n\\t\\t_userId++;\\n\\t}\\n\\n\\tfunction transfer(\\n\\t\\taddress _to,\\n\\t\\tuint256 _value\\n\\t) public returns (bool success) {\\n\\t\\trequire(balanceOf[msg.sender] >= _value, \\\"\\\");\\n\\t\\tinc();\\n\\t\\tbalanceOf[msg.sender] -= _value;\\n\\t\\tbalanceOf[_to] += _value;\\n\\t\\tTokenHolderInfo storage tokenHolderInfo = tokenHolderInfos[_to];\\n\\t\\ttokenHolderInfo._from = msg.sender;\\n\\t\\ttokenHolderInfo._to = _to;\\n\\t\\ttokenHolderInfo._totalToken = _value;\\n\\t\\ttokenHolderInfo._tokenHolder = true;\\n\\t\\ttokenHolderInfo._tokenId = _userId;\\n\\t\\tholderToken.push(_to);\\n\\t\\temit Transfer(msg.sender, _to, _value);\\n\\n\\t\\treturn true;\\n\\t}\\n\\n\\tfunction approve(\\n\\t\\taddress _spender,\\n\\t\\tuint256 _value\\n\\t) public returns (bool success) {\\n\\t\\tallowance[msg.sender][_spender] = _value;\\n\\n\\t\\temit Approval(msg.sender, _spender, _value);\\n\\t\\treturn true;\\n\\t}\\n\\n\\tfunction transferFrom(\\n\\t\\taddress _from,\\n\\t\\taddress _to,\\n\\t\\tuint256 _value\\n\\t) public returns (bool success) {\\n\\t\\trequire(_value <= balanceOf[_from]);\\n\\t\\trequire(_value <= allowance[_from][msg.sender]);\\n\\n\\t\\tbalanceOf[_from] -= _value;\\n\\t\\tbalanceOf[_to] += _value;\\n\\t\\tallowance[_from][msg.sender] -= _value;\\n\\n\\t\\temit Transfer(_from, _to, _value);\\n\\t\\treturn true;\\n\\t}\\n\\n\\tfunction getTokenHolderData(\\n\\t\\taddress _holder\\n\\t) public view returns (TokenHolderInfo memory) {\\n\\t\\treturn tokenHolderInfos[_holder];\\n\\t}\\n\\n\\tfunction getTokenHolder() public view returns (address[] memory) {\\n\\t\\treturn holderToken;\\n\\t}\\n}\\n\",\"keccak256\":\"0x575a4379121e233c33e4fa3e39223ad347a147dfbad6ff28648cb5e4fe2cbb46\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060405161058738038061058783398101604081905261002f91610066565b60008054336001600160a01b031991821617909155600180549091166001600160a01b0393909316929092179091556002556100a0565b6000806040838503121561007957600080fd5b82516001600160a01b038116811461009057600080fd5b6020939093015192949293505050565b6104d8806100af6000396000f3fe60806040526004361061004a5760003560e01c80633610724e1461004f578063380d831b14610064578063518ab2a81461007957806355a373d6146100a25780637ff9b596146100da575b600080fd5b61006261005d3660046103e5565b6100f0565b005b34801561007057600080fd5b5061006261026d565b34801561008557600080fd5b5061008f60035481565b6040519081526020015b60405180910390f35b3480156100ae57600080fd5b506001546100c2906001600160a01b031681565b6040516001600160a01b039091168152602001610099565b3480156100e657600080fd5b5061008f60025481565b6100fc816002546103b2565b341461010757600080fd5b6001546040516370a0823160e01b815230600482015282916001600160a01b0316906370a0823190602401602060405180830381865afa15801561014f573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061017391906103fe565b101561017e57600080fd5b6001546001600160a01b031663a9059cbb336101a284670de0b6b3a764000061042d565b6040516001600160e01b031960e085901b1681526001600160a01b03909216600483015260248201526044016020604051808303816000875af11580156101ed573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102119190610444565b61021a57600080fd5b806003600082825461022c919061046d565b909155505060408051338152602081018390527f5e5e995ce3133561afceaa51a9a154d5db228cd7525d34df5185582c18d3df09910160405180910390a150565b6000546001600160a01b0316331461028457600080fd5b6001546000546040516370a0823160e01b81523060048201526001600160a01b039283169263a9059cbb92169083906370a0823190602401602060405180830381865afa1580156102d9573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102fd91906103fe565b6040516001600160e01b031960e085901b1681526001600160a01b03909216600483015260248201526044016020604051808303816000875af1158015610348573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061036c9190610444565b61037557600080fd5b600080546040516001600160a01b03909116914780156108fc02929091818181858888f193505050501580156103af573d6000803e3d6000fd5b50565b60008115806103d6575082826103c8818361042d565b92506103d49083610480565b145b6103df57600080fd5b92915050565b6000602082840312156103f757600080fd5b5035919050565b60006020828403121561041057600080fd5b5051919050565b634e487b7160e01b600052601160045260246000fd5b80820281158282048414176103df576103df610417565b60006020828403121561045657600080fd5b8151801515811461046657600080fd5b9392505050565b808201808211156103df576103df610417565b60008261049d57634e487b7160e01b600052601260045260246000fd5b50049056fea264697066735822122082dbb4f01b7278abf28dc408483ce8c8375b4101982a601eabf8a039669cd45a64736f6c63430008110033",
+  "deployedBytecode": "0x60806040526004361061004a5760003560e01c80633610724e1461004f578063380d831b14610064578063518ab2a81461007957806355a373d6146100a25780637ff9b596146100da575b600080fd5b61006261005d3660046103e5565b6100f0565b005b34801561007057600080fd5b5061006261026d565b34801561008557600080fd5b5061008f60035481565b6040519081526020015b60405180910390f35b3480156100ae57600080fd5b506001546100c2906001600160a01b031681565b6040516001600160a01b039091168152602001610099565b3480156100e657600080fd5b5061008f60025481565b6100fc816002546103b2565b341461010757600080fd5b6001546040516370a0823160e01b815230600482015282916001600160a01b0316906370a0823190602401602060405180830381865afa15801561014f573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061017391906103fe565b101561017e57600080fd5b6001546001600160a01b031663a9059cbb336101a284670de0b6b3a764000061042d565b6040516001600160e01b031960e085901b1681526001600160a01b03909216600483015260248201526044016020604051808303816000875af11580156101ed573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102119190610444565b61021a57600080fd5b806003600082825461022c919061046d565b909155505060408051338152602081018390527f5e5e995ce3133561afceaa51a9a154d5db228cd7525d34df5185582c18d3df09910160405180910390a150565b6000546001600160a01b0316331461028457600080fd5b6001546000546040516370a0823160e01b81523060048201526001600160a01b039283169263a9059cbb92169083906370a0823190602401602060405180830381865afa1580156102d9573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906102fd91906103fe565b6040516001600160e01b031960e085901b1681526001600160a01b03909216600483015260248201526044016020604051808303816000875af1158015610348573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061036c9190610444565b61037557600080fd5b600080546040516001600160a01b03909116914780156108fc02929091818181858888f193505050501580156103af573d6000803e3d6000fd5b50565b60008115806103d6575082826103c8818361042d565b92506103d49083610480565b145b6103df57600080fd5b92915050565b6000602082840312156103f757600080fd5b5035919050565b60006020828403121561041057600080fd5b5051919050565b634e487b7160e01b600052601160045260246000fd5b80820281158282048414176103df576103df610417565b60006020828403121561045657600080fd5b8151801515811461046657600080fd5b9392505050565b808201808211156103df576103df610417565b60008261049d57634e487b7160e01b600052601260045260246000fd5b50049056fea264697066735822122082dbb4f01b7278abf28dc408483ce8c8375b4101982a601eabf8a039669cd45a64736f6c63430008110033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 4,
+        "contract": "contracts/ICOScaffold.sol:ICOScaffold",
+        "label": "admin",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 7,
+        "contract": "contracts/ICOScaffold.sol:ICOScaffold",
+        "label": "tokenContract",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_contract(Scaffold)444"
+      },
+      {
+        "astId": 9,
+        "contract": "contracts/ICOScaffold.sol:ICOScaffold",
+        "label": "tokenPrice",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 11,
+        "contract": "contracts/ICOScaffold.sol:ICOScaffold",
+        "label": "tokensSold",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_uint256"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_contract(Scaffold)444": {
+        "encoding": "inplace",
+        "label": "contract Scaffold",
+        "numberOfBytes": "20"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

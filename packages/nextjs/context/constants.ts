@@ -10,7 +10,11 @@ export const FACTORY_ADDRESS = "0x1F98431c8aD98523631AE4a59f267346ea31F984";
 export const positionManagerAddress = "0xC36442b4a4522E871399CD717aBDD847Ab11FE88";
 export const ERC20ABI = erc20Abi;
 export const LIQUIDITY_ABI = deployedContracts["31337"].Liquidity.abi;
-export const LIQUIDITY_ADDRESS = deployedContracts["31337"].Liquidity.address;
+export const SCAFFOLD_ADDRESS = "0xC55cc887d0a11e6D8281B42d70b33643C0434c6E";
+export const ICOSCAFFOLD_ADDRESS = "0xD115f67d58fA742Be5dcB9A1E472fFc5dDc5E9B3";
+export const LIQUIDITY_ADDRESS = "0x7B827aA42d29f7322F3BA67DcDbb75394636E539";
+// CTToken 0xb928e2C252291A2d75091122800D47eE1b5C4EE2
+//WETH 0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14
 const fetchContract = (signer: ethers.providers.JsonRpcSigner, ABI: ContractInterface, Address: string) =>
   new ethers.Contract(Address, ABI, signer);
 export const web3Provider = async () => {

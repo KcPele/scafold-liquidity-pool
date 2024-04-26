@@ -1,0 +1,595 @@
+{
+  "address": "0xC55cc887d0a11e6D8281B42d70b33643C0434c6E",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_initialSupply",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_spender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "_userId",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "allowance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_spender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getTokenHolder",
+      "outputs": [
+        {
+          "internalType": "address[]",
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_holder",
+          "type": "address"
+        }
+      ],
+      "name": "getTokenHolderData",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "_tokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "_from",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "_to",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "_totalToken",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "_tokenHolder",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct Scaffold.TokenHolderInfo",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "holderToken",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "name",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "ownerOfContract",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "standard",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "symbol",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "tokenHolderInfos",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "_from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_totalToken",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "_tokenHolder",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "transfer",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_value",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x434ed7b6d9f399fac733e5f71c91317ad431724ba8d35fc61adf3beff1fb4d0a",
+  "receipt": {
+    "to": null,
+    "from": "0x4e212134392ec8a9058Ddc82fb937eBACBe7063D",
+    "contractAddress": "0xC55cc887d0a11e6D8281B42d70b33643C0434c6E",
+    "transactionIndex": 24,
+    "gasUsed": "766256",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x5bbf7089b6d80c47ed195ad595d8114d18cfc86db91473a62ae91fb472e7b46f",
+    "transactionHash": "0x434ed7b6d9f399fac733e5f71c91317ad431724ba8d35fc61adf3beff1fb4d0a",
+    "logs": [],
+    "blockNumber": 5772405,
+    "cumulativeGasUsed": "3628949",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "50000000000000000000000000000"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "6bfa71ed0eac90fc317a0ef41f61ae2f",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_initialSupply\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"_userId\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getTokenHolder\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_holder\",\"type\":\"address\"}],\"name\":\"getTokenHolderData\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"_from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_totalToken\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"_tokenHolder\",\"type\":\"bool\"}],\"internalType\":\"struct Scaffold.TokenHolderInfo\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"holderToken\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"ownerOfContract\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"standard\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"tokenHolderInfos\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"_from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_totalToken\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"_tokenHolder\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"success\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/Scaffold.sol\":\"Scaffold\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/Scaffold.sol\":{\"content\":\"//SPDX-License-Identifier: MIT\\npragma solidity >=0.8.0 <0.9.0;\\n\\ncontract Scaffold {\\n\\tstring public name = \\\"Scaffold\\\";\\n\\tstring public symbol = \\\"SFD\\\";\\n\\tstring public standard = \\\"Scaffold v.0.1\\\";\\n\\tuint256 public totalSupply;\\n\\taddress public ownerOfContract;\\n\\tuint256 public _userId;\\n\\n\\taddress[] public holderToken;\\n\\n\\tevent Transfer(address indexed _from, address indexed _to, uint256 _value);\\n\\tevent Approval(\\n\\t\\taddress indexed _owner,\\n\\t\\taddress indexed _spender,\\n\\t\\tuint256 _value\\n\\t);\\n\\n\\tmapping(address => TokenHolderInfo) public tokenHolderInfos;\\n\\tstruct TokenHolderInfo {\\n\\t\\tuint256 _tokenId;\\n\\t\\taddress _from;\\n\\t\\taddress _to;\\n\\t\\tuint256 _totalToken;\\n\\t\\tbool _tokenHolder;\\n\\t}\\n\\tmapping(address => uint256) public balanceOf;\\n\\tmapping(address => mapping(address => uint256)) public allowance;\\n\\n\\tconstructor(uint256 _initialSupply) {\\n\\t\\townerOfContract = msg.sender;\\n\\t\\tbalanceOf[msg.sender] = _initialSupply;\\n\\t\\ttotalSupply = _initialSupply;\\n\\t}\\n\\n\\tfunction inc() internal {\\n\\t\\t_userId++;\\n\\t}\\n\\n\\tfunction transfer(\\n\\t\\taddress _to,\\n\\t\\tuint256 _value\\n\\t) public returns (bool success) {\\n\\t\\trequire(balanceOf[msg.sender] >= _value, \\\"\\\");\\n\\t\\tinc();\\n\\t\\tbalanceOf[msg.sender] -= _value;\\n\\t\\tbalanceOf[_to] += _value;\\n\\t\\tTokenHolderInfo storage tokenHolderInfo = tokenHolderInfos[_to];\\n\\t\\ttokenHolderInfo._from = msg.sender;\\n\\t\\ttokenHolderInfo._to = _to;\\n\\t\\ttokenHolderInfo._totalToken = _value;\\n\\t\\ttokenHolderInfo._tokenHolder = true;\\n\\t\\ttokenHolderInfo._tokenId = _userId;\\n\\t\\tholderToken.push(_to);\\n\\t\\temit Transfer(msg.sender, _to, _value);\\n\\n\\t\\treturn true;\\n\\t}\\n\\n\\tfunction approve(\\n\\t\\taddress _spender,\\n\\t\\tuint256 _value\\n\\t) public returns (bool success) {\\n\\t\\tallowance[msg.sender][_spender] = _value;\\n\\n\\t\\temit Approval(msg.sender, _spender, _value);\\n\\t\\treturn true;\\n\\t}\\n\\n\\tfunction transferFrom(\\n\\t\\taddress _from,\\n\\t\\taddress _to,\\n\\t\\tuint256 _value\\n\\t) public returns (bool success) {\\n\\t\\trequire(_value <= balanceOf[_from]);\\n\\t\\trequire(_value <= allowance[_from][msg.sender]);\\n\\n\\t\\tbalanceOf[_from] -= _value;\\n\\t\\tbalanceOf[_to] += _value;\\n\\t\\tallowance[_from][msg.sender] -= _value;\\n\\n\\t\\temit Transfer(_from, _to, _value);\\n\\t\\treturn true;\\n\\t}\\n\\n\\tfunction getTokenHolderData(\\n\\t\\taddress _holder\\n\\t) public view returns (TokenHolderInfo memory) {\\n\\t\\treturn tokenHolderInfos[_holder];\\n\\t}\\n\\n\\tfunction getTokenHolder() public view returns (address[] memory) {\\n\\t\\treturn holderToken;\\n\\t}\\n}\\n\",\"keccak256\":\"0x575a4379121e233c33e4fa3e39223ad347a147dfbad6ff28648cb5e4fe2cbb46\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x60c0604052600860809081526714d8d859999bdb1960c21b60a0526000906200002990826200018d565b5060408051808201909152600381526214d19160ea1b60208201526001906200005390826200018d565b5060408051808201909152600e81526d53636166666f6c6420762e302e3160901b60208201526002906200008890826200018d565b503480156200009657600080fd5b5060405162000cce38038062000cce833981016040819052620000b99162000259565b600480546001600160a01b03191633908117909155600090815260086020526040902081905560035562000273565b634e487b7160e01b600052604160045260246000fd5b600181811c908216806200011357607f821691505b6020821081036200013457634e487b7160e01b600052602260045260246000fd5b50919050565b601f8211156200018857600081815260208120601f850160051c81016020861015620001635750805b601f850160051c820191505b8181101562000184578281556001016200016f565b5050505b505050565b81516001600160401b03811115620001a957620001a9620000e8565b620001c181620001ba8454620000fe565b846200013a565b602080601f831160018114620001f95760008415620001e05750858301515b600019600386901b1c1916600185901b17855562000184565b600085815260208120601f198616915b828110156200022a5788860151825594840194600190910190840162000209565b5085821015620002495787850151600019600388901b60f8161c191681555b5050505050600190811b01905550565b6000602082840312156200026c57600080fd5b5051919050565b610a4b80620002836000396000f3fe608060405234801561001057600080fd5b50600436106100f55760003560e01c806370a0823111610097578063a9059cbb11610066578063a9059cbb1461033f578063ba8e355714610352578063bc4530e714610367578063dd62ed3e1461037057600080fd5b806370a082311461021a578063760b06c51461023a57806382b682631461024d57806395d89b411461033757600080fd5b806323b872dd116100d357806323b872dd1461015257806329cc66ed14610165578063468229ae146101e75780635a3b7e421461021257600080fd5b806306fdde03146100fa578063095ea7b31461011857806318160ddd1461013b575b600080fd5b61010261039b565b60405161010f91906107fb565b60405180910390f35b61012b610126366004610865565b610429565b604051901515815260200161010f565b61014460035481565b60405190815260200161010f565b61012b61016036600461088f565b610496565b6101b16101733660046108cb565b6007602052600090815260409020805460018201546002830154600384015460049094015492936001600160a01b0392831693929091169160ff1685565b604080519586526001600160a01b039485166020870152929093169184019190915260608301521515608082015260a00161010f565b6004546101fa906001600160a01b031681565b6040516001600160a01b03909116815260200161010f565b6101026105d6565b6101446102283660046108cb565b60086020526000908152604090205481565b6101fa6102483660046108ed565b6105e3565b6102ea61025b3660046108cb565b6040805160a081018252600080825260208201819052918101829052606081018290526080810191909152506001600160a01b03908116600090815260076020908152604091829020825160a0810184528154815260018201548516928101929092526002810154909316918101919091526003820154606082015260049091015460ff161515608082015290565b60408051825181526020808401516001600160a01b03908116918301919091528383015116918101919091526060808301519082015260809182015115159181019190915260a00161010f565b61010261060d565b61012b61034d366004610865565b61061a565b61035a610782565b60405161010f9190610906565b61014460055481565b61014461037e366004610953565b600960209081526000928352604080842090915290825290205481565b600080546103a890610986565b80601f01602080910402602001604051908101604052809291908181526020018280546103d490610986565b80156104215780601f106103f657610100808354040283529160200191610421565b820191906000526020600020905b81548152906001019060200180831161040457829003601f168201915b505050505081565b3360008181526009602090815260408083206001600160a01b038716808552925280832085905551919290917f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925906104849086815260200190565b60405180910390a35060015b92915050565b6001600160a01b0383166000908152600860205260408120548211156104bb57600080fd5b6001600160a01b03841660009081526009602090815260408083203384529091529020548211156104eb57600080fd5b6001600160a01b038416600090815260086020526040812080548492906105139084906109d6565b90915550506001600160a01b038316600090815260086020526040812080548492906105409084906109e9565b90915550506001600160a01b0384166000908152600960209081526040808320338452909152812080548492906105789084906109d6565b92505081905550826001600160a01b0316846001600160a01b03167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef846040516105c491815260200190565b60405180910390a35060019392505050565b600280546103a890610986565b600681815481106105f357600080fd5b6000918252602090912001546001600160a01b0316905081565b600180546103a890610986565b336000908152600860205260408120548211156106575760405162461bcd60e51b8152602060048201526000602482015260440160405180910390fd5b61065f6107e4565b336000908152600860205260408120805484929061067e9084906109d6565b90915550506001600160a01b038316600090815260086020526040812080548492906106ab9084906109e9565b90915550506001600160a01b038316600081815260076020908152604080832060018082018054336001600160a01b03199182168117909255600284018054821689179055600384018a905560048401805460ff19168417905560055484556006805493840181559096527ff652222313e28459528d920b65115c16c04f3efc82aaedc97be59f3f377c0d3f909101805490951686179094559051868152909392917fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef910160405180910390a35060019392505050565b606060068054806020026020016040519081016040528092919081815260200182805480156107da57602002820191906000526020600020905b81546001600160a01b031681526001909101906020018083116107bc575b5050505050905090565b600580549060006107f4836109fc565b9190505550565b600060208083528351808285015260005b818110156108285785810183015185820160400152820161080c565b506000604082860101526040601f19601f8301168501019250505092915050565b80356001600160a01b038116811461086057600080fd5b919050565b6000806040838503121561087857600080fd5b61088183610849565b946020939093013593505050565b6000806000606084860312156108a457600080fd5b6108ad84610849565b92506108bb60208501610849565b9150604084013590509250925092565b6000602082840312156108dd57600080fd5b6108e682610849565b9392505050565b6000602082840312156108ff57600080fd5b5035919050565b6020808252825182820181905260009190848201906040850190845b818110156109475783516001600160a01b031683529284019291840191600101610922565b50909695505050505050565b6000806040838503121561096657600080fd5b61096f83610849565b915061097d60208401610849565b90509250929050565b600181811c9082168061099a57607f821691505b6020821081036109ba57634e487b7160e01b600052602260045260246000fd5b50919050565b634e487b7160e01b600052601160045260246000fd5b81810381811115610490576104906109c0565b80820180821115610490576104906109c0565b600060018201610a0e57610a0e6109c0565b506001019056fea26469706673582212203a166b21c38cf73cfe97c8975ead7a40221f8c3eadff0b87336df5ffcfa889ac64736f6c63430008110033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100f55760003560e01c806370a0823111610097578063a9059cbb11610066578063a9059cbb1461033f578063ba8e355714610352578063bc4530e714610367578063dd62ed3e1461037057600080fd5b806370a082311461021a578063760b06c51461023a57806382b682631461024d57806395d89b411461033757600080fd5b806323b872dd116100d357806323b872dd1461015257806329cc66ed14610165578063468229ae146101e75780635a3b7e421461021257600080fd5b806306fdde03146100fa578063095ea7b31461011857806318160ddd1461013b575b600080fd5b61010261039b565b60405161010f91906107fb565b60405180910390f35b61012b610126366004610865565b610429565b604051901515815260200161010f565b61014460035481565b60405190815260200161010f565b61012b61016036600461088f565b610496565b6101b16101733660046108cb565b6007602052600090815260409020805460018201546002830154600384015460049094015492936001600160a01b0392831693929091169160ff1685565b604080519586526001600160a01b039485166020870152929093169184019190915260608301521515608082015260a00161010f565b6004546101fa906001600160a01b031681565b6040516001600160a01b03909116815260200161010f565b6101026105d6565b6101446102283660046108cb565b60086020526000908152604090205481565b6101fa6102483660046108ed565b6105e3565b6102ea61025b3660046108cb565b6040805160a081018252600080825260208201819052918101829052606081018290526080810191909152506001600160a01b03908116600090815260076020908152604091829020825160a0810184528154815260018201548516928101929092526002810154909316918101919091526003820154606082015260049091015460ff161515608082015290565b60408051825181526020808401516001600160a01b03908116918301919091528383015116918101919091526060808301519082015260809182015115159181019190915260a00161010f565b61010261060d565b61012b61034d366004610865565b61061a565b61035a610782565b60405161010f9190610906565b61014460055481565b61014461037e366004610953565b600960209081526000928352604080842090915290825290205481565b600080546103a890610986565b80601f01602080910402602001604051908101604052809291908181526020018280546103d490610986565b80156104215780601f106103f657610100808354040283529160200191610421565b820191906000526020600020905b81548152906001019060200180831161040457829003601f168201915b505050505081565b3360008181526009602090815260408083206001600160a01b038716808552925280832085905551919290917f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925906104849086815260200190565b60405180910390a35060015b92915050565b6001600160a01b0383166000908152600860205260408120548211156104bb57600080fd5b6001600160a01b03841660009081526009602090815260408083203384529091529020548211156104eb57600080fd5b6001600160a01b038416600090815260086020526040812080548492906105139084906109d6565b90915550506001600160a01b038316600090815260086020526040812080548492906105409084906109e9565b90915550506001600160a01b0384166000908152600960209081526040808320338452909152812080548492906105789084906109d6565b92505081905550826001600160a01b0316846001600160a01b03167fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef846040516105c491815260200190565b60405180910390a35060019392505050565b600280546103a890610986565b600681815481106105f357600080fd5b6000918252602090912001546001600160a01b0316905081565b600180546103a890610986565b336000908152600860205260408120548211156106575760405162461bcd60e51b8152602060048201526000602482015260440160405180910390fd5b61065f6107e4565b336000908152600860205260408120805484929061067e9084906109d6565b90915550506001600160a01b038316600090815260086020526040812080548492906106ab9084906109e9565b90915550506001600160a01b038316600081815260076020908152604080832060018082018054336001600160a01b03199182168117909255600284018054821689179055600384018a905560048401805460ff19168417905560055484556006805493840181559096527ff652222313e28459528d920b65115c16c04f3efc82aaedc97be59f3f377c0d3f909101805490951686179094559051868152909392917fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef910160405180910390a35060019392505050565b606060068054806020026020016040519081016040528092919081815260200182805480156107da57602002820191906000526020600020905b81546001600160a01b031681526001909101906020018083116107bc575b5050505050905090565b600580549060006107f4836109fc565b9190505550565b600060208083528351808285015260005b818110156108285785810183015185820160400152820161080c565b506000604082860101526040601f19601f8301168501019250505092915050565b80356001600160a01b038116811461086057600080fd5b919050565b6000806040838503121561087857600080fd5b61088183610849565b946020939093013593505050565b6000806000606084860312156108a457600080fd5b6108ad84610849565b92506108bb60208501610849565b9150604084013590509250925092565b6000602082840312156108dd57600080fd5b6108e682610849565b9392505050565b6000602082840312156108ff57600080fd5b5035919050565b6020808252825182820181905260009190848201906040850190845b818110156109475783516001600160a01b031683529284019291840191600101610922565b50909695505050505050565b6000806040838503121561096657600080fd5b61096f83610849565b915061097d60208401610849565b90509250929050565b600181811c9082168061099a57607f821691505b6020821081036109ba57634e487b7160e01b600052602260045260246000fd5b50919050565b634e487b7160e01b600052601160045260246000fd5b81810381811115610490576104906109c0565b80820180821115610490576104906109c0565b600060018201610a0e57610a0e6109c0565b506001019056fea26469706673582212203a166b21c38cf73cfe97c8975ead7a40221f8c3eadff0b87336df5ffcfa889ac64736f6c63430008110033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 158,
+        "contract": "contracts/Scaffold.sol:Scaffold",
+        "label": "name",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 161,
+        "contract": "contracts/Scaffold.sol:Scaffold",
+        "label": "symbol",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 164,
+        "contract": "contracts/Scaffold.sol:Scaffold",
+        "label": "standard",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_string_storage"
+      },
+      {
+        "astId": 166,
+        "contract": "contracts/Scaffold.sol:Scaffold",
+        "label": "totalSupply",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 168,
+        "contract": "contracts/Scaffold.sol:Scaffold",
+        "label": "ownerOfContract",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_address"
+      },
+      {
+        "astId": 170,
+        "contract": "contracts/Scaffold.sol:Scaffold",
+        "label": "_userId",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 173,
+        "contract": "contracts/Scaffold.sol:Scaffold",
+        "label": "holderToken",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_array(t_address)dyn_storage"
+      },
+      {
+        "astId": 194,
+        "contract": "contracts/Scaffold.sol:Scaffold",
+        "label": "tokenHolderInfos",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_mapping(t_address,t_struct(TokenHolderInfo)205_storage)"
+      },
+      {
+        "astId": 209,
+        "contract": "contracts/Scaffold.sol:Scaffold",
+        "label": "balanceOf",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_mapping(t_address,t_uint256)"
+      },
+      {
+        "astId": 215,
+        "contract": "contracts/Scaffold.sol:Scaffold",
+        "label": "allowance",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_address)dyn_storage": {
+        "base": "t_address",
+        "encoding": "dynamic_array",
+        "label": "address[]",
+        "numberOfBytes": "32"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => mapping(address => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_address,t_uint256)"
+      },
+      "t_mapping(t_address,t_struct(TokenHolderInfo)205_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => struct Scaffold.TokenHolderInfo)",
+        "numberOfBytes": "32",
+        "value": "t_struct(TokenHolderInfo)205_storage"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(TokenHolderInfo)205_storage": {
+        "encoding": "inplace",
+        "label": "struct Scaffold.TokenHolderInfo",
+        "members": [
+          {
+            "astId": 196,
+            "contract": "contracts/Scaffold.sol:Scaffold",
+            "label": "_tokenId",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 198,
+            "contract": "contracts/Scaffold.sol:Scaffold",
+            "label": "_from",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address"
+          },
+          {
+            "astId": 200,
+            "contract": "contracts/Scaffold.sol:Scaffold",
+            "label": "_to",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_address"
+          },
+          {
+            "astId": 202,
+            "contract": "contracts/Scaffold.sol:Scaffold",
+            "label": "_totalToken",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 204,
+            "contract": "contracts/Scaffold.sol:Scaffold",
+            "label": "_tokenHolder",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_bool"
+          }
+        ],
+        "numberOfBytes": "160"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

@@ -4,6 +4,9 @@ import {
   CONNECTION_CONTRACT,
   FACTORY_ABI,
   FACTORY_ADDRESS,
+  ICOSCAFFOLD_ADDRESS,
+  LIQUIDITY_ADDRESS,
+  SCAFFOLD_ADDRESS,
   internalContract,
   positionManagerAddress,
 } from "./constants";
@@ -37,19 +40,13 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
 
   //contracts
   const liquidityContract = useCallback(async () => {
-    return await internalContract(
-      deployedContracts["31337"].Liquidity.abi,
-      deployedContracts["31337"].Liquidity.address,
-    );
+    return await internalContract(deployedContracts["31337"].Liquidity.abi, LIQUIDITY_ADDRESS);
   }, []);
   const scaffoldContract = useCallback(async () => {
-    return await internalContract(deployedContracts["31337"].Scaffold.abi, deployedContracts["31337"].Scaffold.address);
+    return await internalContract(deployedContracts["31337"].Scaffold.abi, SCAFFOLD_ADDRESS);
   }, []);
   const icoScaffoldContract = useCallback(async () => {
-    return await internalContract(
-      deployedContracts["31337"].ICOScaffold.abi,
-      deployedContracts["31337"].ICOScaffold.address,
-    );
+    return await internalContract(deployedContracts["31337"].ICOScaffold.abi, ICOSCAFFOLD_ADDRESS);
   }, []);
   //notification
   const notifyError = (msg: string) => toast.error(msg, { duration: 4000 });
@@ -77,7 +74,8 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
     try {
       setLoader(true);
       const contract = await internalContract(FACTORY_ABI, FACTORY_ADDRESS);
-      const poolAddress = (await contract?.getPool(token_1.address, token_2.address, Number(fee))) as string;
+      const fees = ethers.utils.parseUnits(fee, token_1.decimals).toString();
+      const poolAddress = (await contract?.getPool(token_1.address, token_2.address, fees)) as string;
       const poolHistory = {
         token_A: token_1,
         token_B: token_2,
@@ -107,6 +105,7 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
       }
       return poolAddress;
     } catch (error: any) {
+      console.log(error);
       const errorMsg = parseErrorMsg(error);
 
       setLoader(false);
