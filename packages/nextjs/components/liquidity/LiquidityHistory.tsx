@@ -112,9 +112,10 @@ const LiquidityHistory = () => {
               <tfoot>
                 <tr>
                   <td colSpan={8}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus porro suscipit cupiditate esse illum
-                    ullam omnis fugit assumenda rem ex odio facere quisquam amet architecto consequuntur veritatis,
-                    doloremque ratione! Ducimus.
+                    Explore our liquidity marketplace with ease using our intuitive interface. Our table layout neatly
+                    organizes essential information about each liquidity pool, including token pairs, addresses,
+                    creation timestamps, and transaction hashes. With this transparent and accessible overview, you can
+                    confidently navigate and participate in decentralized finance like never before
                   </td>
                 </tr>
               </tfoot>

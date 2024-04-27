@@ -26,15 +26,20 @@ const ICOSale = () => {
                 Hurry to invest <span className="weight-bold"> in cryptocurrency</span>
               </h2>
               <div className="heading-text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique eligendi doloribus earum aperiam
-                fugit debitis in. Iste natus as dolorem quisquam.
+                Investing in cryptocurrency has become increasingly popular as digital assets continue to gain traction
+                and mainstream acceptance. With the potential for substantial returns, many investors are eager to seize
+                opportunities in this rapidly evolving market. However, it&apos;s essential to approach cryptocurrency
+                investment with caution and diligence. While the potential rewards can be significant, so too are the
+                risks.
               </div>
             </header>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum cumque mollitia aut minus voluptates quos
-              inventore cupiditate vero quisquam et expedita, consequatur numquam, ad sed error accusantium nulla.
-              Earum, at, laboriosam maiores perspiciatis ab blanditiis facilis itaque minima hic cum nesciunt
-              consectetur sed. Molestias a nobis non unde, cupiditate ad.
+              The cryptocurrency market is notoriously volatile, with prices subject to rapid fluctuations driven by
+              various factors, including market sentiment, regulatory developments, and technological advancements.
+              Therefore, while the allure of quick profits may be tempting, it&apos;s crucial to conduct thorough
+              research, diversify your portfolio, and only invest what you can afford to lose. By taking a measured
+              approach and staying informed, investors can navigate the cryptocurrency landscape more effectively and
+              make sound investment decisions.
             </p>
             <div className="crumina-module crumina-counter-item counter--icon-left mt60">
               <svg className="woox-icon">

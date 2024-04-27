@@ -14,16 +14,19 @@ const App = () => {
                 Statistic of currencies on <span className="weight-bold"> all your device</span>
               </h2>
               <div className="heading-text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique eligendi doloribus earum aperiam
-                fugit debitis in. Iste natus delectus laudantium molestias beatae aliquid molestiae fugiat dolor facere
-                dolorum? Natus illo nisi expedita id. Eum eligendi voluptatum, vitae quas dolorem quisquam.
+                Stay informed and ahead of the curve with our comprehensive analysis of the top 5 cryptocurrencies. Our
+                platform aggregates real-time data from across the market, offering you unparalleled insights into the
+                dynamic world of digital assets. Whether you&apos;re a seasoned investor or a newcomer to the crypto
+                space, our curated selection provides a snapshot of the most influential players, allowing you to make
+                informed decisions with confidence.
               </div>
             </header>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel, eaque eligendi illum ducimus voluptate
-              asperiores quo quasi perferendis modi maiores, iste quaerat harum repudiandae nulla, laudantium provident
-              aspernatur? Adipisci architecto iste suscipit quo repellendus, incidunt reprehenderit magni ratione
-              temporibus nam.
+              With our seamless integration across all your devices, you can access critical statistics and trends
+              wherever you go. From your desktop to your smartphone, stay connected to the pulse of the cryptocurrency
+              market at all times. Our user-friendly interface empowers you to track performance, monitor changes, and
+              seize opportunities with ease, ensuring that you&apos;re always in control of your crypto portfolio&apos;s
+              destiny.
             </p>
             <div className="btn-market-wrap mt60">
               <Link href="#" className="btn btn--market btn--apple btn--with-icon btn--icon-left">

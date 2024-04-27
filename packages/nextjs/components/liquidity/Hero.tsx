@@ -13,9 +13,10 @@ const Hero = () => {
               <div className="heading-sup-title"> Coin market</div>
               <h2 className="heading-title text-4xl heading--half-colored">Created liquidity marketplace</h2>
               <div className="heading-text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores eveniet eligendi sunt magnam ducimus
-                nemo enim laudantium quidem pariatur, cupiditate ipsam vel vitae qui accusamus nam natus vero nobis
-                omnis.
+                Welcome to our DApp, where we&apos;ve revolutionized liquidity provision with our cutting-edge
+                marketplace. Say goodbye to liquidity issues and hello to seamless transactions. Our innovative
+                marketplace empowers users to create, manage, and optimize liquidity like never before. Join us and
+                experience a new era of decentralized finance.
               </div>
             </header>
             <Link

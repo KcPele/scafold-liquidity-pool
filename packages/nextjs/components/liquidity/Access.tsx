@@ -17,9 +17,13 @@ const Access = () => {
                   Access <span className="weight-bold">analytical market $ price data</span>
                 </h2>
                 <div className="heading-text">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique eligendi doloribus earum aperiam
-                  fugit debitis in. Iste natus delectus laudantium molestias beatae aliquid molestiae fugiat dolor
-                  facere dolorum? Natus illo nisi expedita id. Eum eligendi voluptatum, vitae quas dolorem quisquam.
+                  Accessing analytical market and price data is pivotal in navigating the dynamic landscape of
+                  cryptocurrencies and financial markets. With the exponential growth of digital assets, having
+                  real-time insights and comprehensive analytics at your fingertips is essential for making informed
+                  investment decisions. Whether you&apos;re a seasoned trader or a novice enthusiast, having access to
+                  reliable data empowers you to monitor trends, identify patterns, and seize opportunities with
+                  confidence. By leveraging analytical tools and market data, you can stay ahead of the curve, mitigate
+                  risks, and optimize your investment strategies in the fast-paced world of digital finance.
                 </div>
               </header>
             </div>
