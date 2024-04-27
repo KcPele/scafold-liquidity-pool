@@ -2,11 +2,19 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Input from "./Input";
 import { useLiquidityContext } from "~~/hooks/liquidity/useLiquidityContext";
+import { useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 
 const ICOSale = () => {
-  const { tokenSale, nativeToken, buyToken } = useLiquidityContext();
+  const { tokenSale, nativeToken, handleSetLoader } = useLiquidityContext();
   const [tokenQuantity, setTokenQuantity] = useState("");
   const percentage = (Number(tokenSale?.tokenSold) / Number(tokenSale?.tokenSaleBalance)) * 100;
+  const { writeAsync } = useScaffoldContractWrite({
+    contractName: "ICOScaffold",
+    functionName: "buyTokens",
+    args: [BigInt(tokenQuantity)],
+    value: BigInt(Math.round(0.0011 * Number(tokenQuantity) * 10 ** 18)),
+    gas: BigInt(100000),
+  });
   return (
     <section id="tokenbuy" className="medium-padding120 responsive-align-center">
       <div className="container" id="buyScafold">
@@ -54,7 +62,15 @@ const ICOSale = () => {
                 placeholder="token Qauntity"
                 handleClick={e => setTokenQuantity(e.target.value)}
               />
-              <button onClick={() => buyToken(tokenQuantity)} className="btn  btn--large btn--green-light">
+              <button
+                onClick={async () => {
+                  handleSetLoader(true);
+                  await writeAsync();
+
+                  handleSetLoader(false);
+                }}
+                className="btn  btn--large btn--green-light"
+              >
                 Buy Scafold Tokens
               </button>
               <div className="crumina-module scumina-skills-item skills-item--bordered">
@@ -95,7 +111,10 @@ const ICOSale = () => {
                 </div>
                 <div className="token-total">
                   Total {nativeToken?.tokenSymbol}
-                  Tokens: <div className="price-value">{tokenSale?.tokenSaleBalance}</div>
+                  Tokens:{" "}
+                  <div className="price-value">
+                    {tokenSale ? parseFloat(tokenSale?.tokenSaleBalance).toFixed(4) : "0"}
+                  </div>
                 </div>
               </div>
             </div>

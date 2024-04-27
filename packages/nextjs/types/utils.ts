@@ -54,7 +54,7 @@ export interface IContext {
   loader: boolean;
   DAPP_NAME: string;
   transferNativeToken: () => Promise<void>;
-  buyToken: (nToken: string) => Promise<void>;
+  handleSetLoader: (state: boolean) => void;
   GET_POOL_ADDRESS: (token_1: IToken, token_2: IToken, fee: string) => Promise<string | undefined>;
   CREATE_LIQUIDITY: (pool: IPoolHistory, liquidityAmount: string, approvedAmount: string) => Promise<void>;
   GET_ALL_LIQUIDITY: () => Promise<ILiquidity[] | undefined>;

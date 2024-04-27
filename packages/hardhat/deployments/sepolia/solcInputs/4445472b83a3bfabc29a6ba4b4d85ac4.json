@@ -1,0 +1,38 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/ICOScaffold.sol": {
+      "content": "//SPDX-License-Identifier: MIT\npragma solidity >=0.8.0 <0.9.0;\nimport \"./Scaffold.sol\";\ncontract ICOScaffold {\n\taddress admin;\n\tScaffold public tokenContract;\n\tuint256 public tokenPrice;\n\tuint256 public tokensSold;\n\n\tevent Sell(address _buyer, uint256 _amount);\n\n\tconstructor(Scaffold _tokenContract, uint256 _tokenPrice) {\n\t\tadmin = msg.sender;\n\t\ttokenContract = _tokenContract;\n\t\ttokenPrice = _tokenPrice;\n\t}\n\n\tfunction multiply(uint x, uint y) internal pure returns (uint z) {\n\t\trequire(y == 0 || (z = x * y) / y == x);\n\t}\n\n\tfunction buyTokens(uint256 _numberOfTokens) public payable {\n\t\trequire(\n\t\t\tmsg.value >= multiply(_numberOfTokens, tokenPrice),\n\t\t\t\"value sent must be greater than or equal to the token bought\"\n\t\t);\n\t\trequire(\n\t\t\ttokenContract.balanceOf(address(this)) >= _numberOfTokens,\n\t\t\t\"token contract balance not enough\"\n\t\t);\n\t\trequire(\n\t\t\ttokenContract.transfer(msg.sender, _numberOfTokens),\n\t\t\t\"transfer not successfull\"\n\t\t);\n\n\t\ttokensSold += _numberOfTokens;\n\n\t\temit Sell(msg.sender, _numberOfTokens);\n\t}\n\tfunction endSale() public {\n\t\trequire(msg.sender == admin);\n\t\trequire(\n\t\t\ttokenContract.transfer(\n\t\t\t\tadmin,\n\t\t\t\ttokenContract.balanceOf(address(this))\n\t\t\t)\n\t\t);\n\n\t\t// Just transfer the balance to the admin\n\t\tpayable(admin).transfer(address(this).balance);\n\t}\n}\n"
+    },
+    "contracts/Scaffold.sol": {
+      "content": "//SPDX-License-Identifier: MIT\npragma solidity >=0.8.0 <0.9.0;\n\ncontract Scaffold {\n\tstring public name = \"Scaffold\";\n\tstring public symbol = \"SFD\";\n\tstring public standard = \"Scaffold v.0.1\";\n\tuint256 public totalSupply;\n\taddress public ownerOfContract;\n\tuint256 public _userId;\n\n\taddress[] public holderToken;\n\n\tevent Transfer(address indexed _from, address indexed _to, uint256 _value);\n\tevent Approval(\n\t\taddress indexed _owner,\n\t\taddress indexed _spender,\n\t\tuint256 _value\n\t);\n\n\tmapping(address => TokenHolderInfo) public tokenHolderInfos;\n\tstruct TokenHolderInfo {\n\t\tuint256 _tokenId;\n\t\taddress _from;\n\t\taddress _to;\n\t\tuint256 _totalToken;\n\t\tbool _tokenHolder;\n\t}\n\tmapping(address => uint256) public balanceOf;\n\tmapping(address => mapping(address => uint256)) public allowance;\n\n\tconstructor(uint256 _initialSupply) {\n\t\townerOfContract = msg.sender;\n\t\tbalanceOf[msg.sender] = _initialSupply;\n\t\ttotalSupply = _initialSupply;\n\t}\n\n\tfunction inc() internal {\n\t\t_userId++;\n\t}\n\n\tfunction transfer(\n\t\taddress _to,\n\t\tuint256 _value\n\t) public returns (bool success) {\n\t\trequire(\n\t\t\tbalanceOf[msg.sender] >= _value,\n\t\t\t\"value must be less than balance\"\n\t\t);\n\t\tinc();\n\t\tbalanceOf[msg.sender] -= _value;\n\t\tbalanceOf[_to] += _value;\n\t\tTokenHolderInfo storage tokenHolderInfo = tokenHolderInfos[_to];\n\t\ttokenHolderInfo._from = msg.sender;\n\t\ttokenHolderInfo._to = _to;\n\t\ttokenHolderInfo._totalToken = _value;\n\t\ttokenHolderInfo._tokenHolder = true;\n\t\ttokenHolderInfo._tokenId = _userId;\n\t\tholderToken.push(_to);\n\t\temit Transfer(msg.sender, _to, _value);\n\n\t\treturn true;\n\t}\n\n\tfunction approve(\n\t\taddress _spender,\n\t\tuint256 _value\n\t) public returns (bool success) {\n\t\tallowance[msg.sender][_spender] = _value;\n\n\t\temit Approval(msg.sender, _spender, _value);\n\t\treturn true;\n\t}\n\n\tfunction transferFrom(\n\t\taddress _from,\n\t\taddress _to,\n\t\tuint256 _value\n\t) public returns (bool success) {\n\t\trequire(_value <= balanceOf[_from], \"value must be less than balance\");\n\t\trequire(\n\t\t\t_value <= allowance[_from][msg.sender],\n\t\t\t\"value must be less than allowed balance\"\n\t\t);\n\n\t\tbalanceOf[_from] -= _value;\n\t\tbalanceOf[_to] += _value;\n\t\tallowance[_from][msg.sender] -= _value;\n\n\t\temit Transfer(_from, _to, _value);\n\t\treturn true;\n\t}\n\n\tfunction getTokenHolderData(\n\t\taddress _holder\n\t) public view returns (TokenHolderInfo memory) {\n\t\treturn tokenHolderInfos[_holder];\n\t}\n\n\tfunction getTokenHolder() public view returns (address[] memory) {\n\t\treturn holderToken;\n\t}\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}

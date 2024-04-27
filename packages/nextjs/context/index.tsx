@@ -25,7 +25,7 @@ import { parseErrorMsg } from "~~/utils/liquidity";
 
 export const CONTEXT = React.createContext<IContext | null>(null);
 export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) => {
-  const gasFee = BigInt("1000000");
+  const gasFee = BigInt("100000");
   const { chain } = useNetwork();
   const { address } = useAccount();
   const DAPP_NAME = "Liquidity Dapp";
@@ -48,11 +48,12 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
   const icoScaffoldContract = useCallback(async () => {
     return await internalContract(deployedContracts["31337"].ICOScaffold.abi, ICOSCAFFOLD_ADDRESS);
   }, []);
+
   //notification
   const notifyError = (msg: string) => toast.error(msg, { duration: 4000 });
   const notifySuccess = (msg: string) => toast.success(msg, { duration: 4000 });
 
-  //load tokens
+  //load tokens done
   const LOAD_TOKEN = async (tokenAddress: string) => {
     const tokenDetails = await CONNECTION_CONTRACT(tokenAddress);
     if (!tokenDetails) {
@@ -69,7 +70,7 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
     };
   };
 
-  //get pool address
+  //get pool address done
   const GET_POOL_ADDRESS = async (token_1: IToken, token_2: IToken, fee: string) => {
     try {
       setLoader(true);
@@ -113,7 +114,7 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
     }
   };
 
-  //get pool data
+  //get pool data done
   async function getPoolData(poolContract: ethers.Contract) {
     const [tickSpacing, fee, liquidity, slot0] = await Promise.all([
       poolContract.tickSpacing(),
@@ -207,7 +208,9 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
       console.log(transactionHash);
 
       if (transactionHash) {
-        const addLiquidityData = (await liquidityContract())?.addLiquidity([
+        await (
+          await liquidityContract()
+        )?.addLiquidity(
           pool.token_A.name,
           pool.token_B.name,
           pool.token_A.address,
@@ -215,8 +218,11 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
           poolAddress,
           pool.token_A.chainId.toString(),
           transactionHash?.hash,
-        ]);
-        await addLiquidityData?.result;
+          {
+            gasLimit: gasFee,
+          },
+        );
+        // await addLiquidityData?.result;
         setLoader(false);
         notifySuccess("Liquidity add successfully");
         window.location.reload();
@@ -230,7 +236,7 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
     }
   };
 
-  //native token
+  //native token done
   const fetchInitailData = useCallback(async () => {
     if (!address) {
       return;
@@ -243,20 +249,19 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
       setBalance(balance.formatted);
 
       //scaffold token contract
-      let tokenBalance;
+
       const scafContract = await scaffoldContract();
-      if (address) {
-        tokenBalance = scafContract?.balanceOf(address);
-      } else {
-        tokenBalance = 0;
-      }
+
+      const tokenBalance = (await scafContract?.balanceOf(address)).toString();
+
+      console.log(tokenBalance.toString());
       const tokenAddress = scafContract?.address;
-      const tokenName = scafContract?.name();
-      const tokenSymbol = scafContract?.symbol();
-      const tokenTotalSupply = scafContract?.totalSupply();
-      const tokenStandard = scafContract?.standard();
-      const tokenHolders = scafContract?._userId();
-      const tokenOwnerOfContract = scafContract?.ownerOfContract();
+      const tokenName = await scafContract?.name();
+      const tokenSymbol = await scafContract?.symbol();
+      const tokenTotalSupply = await scafContract?.totalSupply();
+      const tokenStandard = await scafContract?.standard();
+      const tokenHolders = await scafContract?._userId();
+      const tokenOwnerOfContract = await scafContract?.ownerOfContract();
       const nativeToken = {
         tokenName,
         tokenAddress,
@@ -270,36 +275,33 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
       setNativeToken(nativeToken);
 
       //geting token holders
-      const getTokenHolders = scafContract?.getTokenHolder() as string[];
+      const getTokenHolders = (await scafContract?.getTokenHolder()) as string[];
       setTokenHolders(getTokenHolders);
-
       //getting token holder data
-      if (address) {
-        const getTokenHolderData = scafContract?.getTokenHolderData(address) as any;
-        const currentHolder = {
-          tokenId: getTokenHolderData?._tokenId,
-          from: getTokenHolderData?._from,
-          to: getTokenHolderData?._to,
-          totalToken: ethers.utils.formatEther(getTokenHolderData?._totalToken.toString() as string),
-          tokenHolders: getTokenHolderData?._tokenHolder,
-        };
-        setCurrentHolder(currentHolder);
-      }
+
+      const getTokenHolderData = (await scafContract?.getTokenHolderData(address)) as any;
+      const currentHolder = {
+        tokenId: getTokenHolderData?._tokenId,
+        from: getTokenHolderData?._from,
+        to: getTokenHolderData?._to,
+        totalToken: ethers.utils.formatEther(getTokenHolderData?._totalToken.toString() as string),
+        tokenHolders: getTokenHolderData?._tokenHolder,
+      };
+      setCurrentHolder(currentHolder);
 
       //token sale contract
       const icoScafContract = await icoScaffoldContract();
-      const tokenPrice = icoScafContract?.tokenPrice();
-      const tokenSold = icoScafContract?.tokensSold();
-      const tokenSaleBalance = scafContract?.balanceOf(icoScafContract?.address as string);
+      const tokenPrice = await icoScafContract?.tokenPrice();
+      const tokenSold = await icoScafContract?.tokensSold();
+      const tokenSaleBalance = await scafContract?.balanceOf(icoScafContract?.address as string);
       const tokenSale = {
-        tokenPrice: ethers.utils.formatEther((tokenPrice as bigint)?.toString()),
+        tokenPrice: ethers.utils.formatEther(tokenPrice.toString() as string),
         tokenSold: (tokenSold as bigint)?.toString(),
         tokenSaleBalance: ethers.utils.formatEther((tokenSaleBalance as bigint)?.toString()),
       };
       setTokenSale(tokenSale);
-      console.log(tokenSale);
-      console.log(nativeToken);
     } catch (error: any) {
+      console.log(error);
       const errorMsg = parseErrorMsg(error);
 
       setLoader(false);
@@ -308,42 +310,29 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
   }, [address, chain?.id, scaffoldContract, icoScaffoldContract]);
   useEffect(() => {
     fetchInitailData();
-  }, [fetchInitailData]);
-
-  const buyToken = async (nToken: string) => {
-    try {
-      setLoader(true);
-      const price = 0.0001 * Number(nToken);
-      const amount = ethers.utils.parseEther(price.toString());
-
-      const buying = (await icoScaffoldContract())?.buyTokens(amount, {
-        gas: gasFee,
-      });
-
-      await buying?.result;
-      window.location.reload();
-    } catch (error: any) {
-      const errorMsg = parseErrorMsg(error);
-      setLoader(false);
-      notifyError(errorMsg);
-    }
-  };
+  }, [fetchInitailData, address, loader]);
 
   //Native token transfer
   const transferNativeToken = async () => {
     try {
       setLoader(true);
-      const TOKEN_SALE_ADDRESS = (await icoScaffoldContract())?.address as string;
-      const TOKEN_AMOUNT = 2000;
+      const icoScafContract = await icoScaffoldContract();
+
+      const TOKEN_SALE_ADDRESS = icoScafContract?.address as string;
+      const TOKEN_AMOUNT = 20000;
       const nTokens = TOKEN_AMOUNT.toString();
       const transferAmount = ethers.utils.parseEther(nTokens);
-      const trascation = (await scaffoldContract())?.transfer(TOKEN_SALE_ADDRESS, transferAmount.toBigInt(), {
-        gas: gasFee,
+      console.log(transferAmount);
+      await (
+        await scaffoldContract()
+      )?.transfer(TOKEN_SALE_ADDRESS, TOKEN_AMOUNT.toString(), {
+        gasLimit: gasFee,
       });
-      await trascation.wait();
+
       setLoader(false);
-      window.location.reload();
+      // window.location.reload();
     } catch (error: any) {
+      console.log(error);
       const errorMsg = parseErrorMsg(error);
       setLoader(false);
       notifyError(errorMsg);
@@ -357,8 +346,8 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
       if (!address) {
         throw new Error("Connect address");
       }
-
-      const liquidityHistory = (await liquidityContract())?.getAllLiquidity(address) as [];
+      const liqContract = await liquidityContract();
+      const liquidityHistory = (await liqContract?.getAllLiquidity(address)) as [];
       const AllLiquidity = liquidityHistory?.map((liquidity: any) => {
         const liquidityArray = {
           id: liquidity.id.toString(),
@@ -384,6 +373,10 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
     }
   };
 
+  const handleSetLoader = (state: boolean) => {
+    setLoader(state);
+  };
+
   return (
     <CONTEXT.Provider
       value={{
@@ -395,13 +388,13 @@ export const CONTEXT_Provider = ({ children }: { children: React.ReactNode }) =>
         loader,
         DAPP_NAME,
         transferNativeToken,
-        buyToken,
         GET_POOL_ADDRESS,
         CREATE_LIQUIDITY,
         GET_ALL_LIQUIDITY,
         LOAD_TOKEN,
         notifyError,
         notifySuccess,
+        handleSetLoader,
       }}
     >
       {children}

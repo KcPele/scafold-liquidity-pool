@@ -1,8 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Address } from "../scaffold-eth";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { RainbowKitCustomConnectButton } from "../scaffold-eth";
 import { useAccount } from "wagmi";
 
 const Header = ({
@@ -39,11 +38,12 @@ const Header = ({
               </li>
               {address ? (
                 <li>
-                  <Address address={address} />{" "}
+                  {/* <Address address={address} />{" "} */}
+                  <RainbowKitCustomConnectButton />
                 </li>
               ) : (
                 <li>
-                  <ConnectButton />
+                  <RainbowKitCustomConnectButton />
                 </li>
               )}
             </ul>

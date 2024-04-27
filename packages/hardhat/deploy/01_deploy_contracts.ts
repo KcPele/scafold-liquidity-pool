@@ -1,6 +1,7 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
 import { ethers } from "hardhat";
+import { Contract } from "ethers";
 
 const tokens = (nToken: number) => {
   return ethers.parseUnits(nToken.toString(), "ether");
@@ -19,7 +20,7 @@ const deployScaffoldContract: DeployFunction = async function (hre: HardhatRunti
   console.log(`Scaffold: ${scaffold.address}`);
 
   // ICO Scaffold
-  const _tokenPrice = tokens(0.0001);
+  const _tokenPrice = tokens(0.001);
   const icoScaffold = await deploy("ICOScaffold", {
     from: deployer,
     args: [scaffold.address, _tokenPrice],
@@ -27,7 +28,8 @@ const deployScaffoldContract: DeployFunction = async function (hre: HardhatRunti
     autoMine: true,
   });
   console.log(`ICOScaffold: ${icoScaffold.address}`);
-
+  const scaffoldContract = await hre.ethers.getContract<Contract>("Scaffold", deployer);
+  console.log("👋 Initial greeting:", await scaffoldContract.transfer(icoScaffold.address, tokens(40000000000)));
   //Liquidity
   const liquidity = await deploy("Liquidity", {
     from: deployer,

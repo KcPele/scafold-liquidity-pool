@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { CONTEXT } from "~~/context";
 import { IContext } from "~~/types/utils";
 
@@ -15,7 +15,7 @@ export const useLiquidityContext = () => {
     loader,
     DAPP_NAME,
     transferNativeToken,
-    buyToken,
+    handleSetLoader,
     GET_POOL_ADDRESS,
     CREATE_LIQUIDITY,
     GET_ALL_LIQUIDITY,
@@ -32,7 +32,7 @@ export const useLiquidityContext = () => {
     loader,
     DAPP_NAME,
     transferNativeToken,
-    buyToken,
+    handleSetLoader,
     GET_POOL_ADDRESS,
     CREATE_LIQUIDITY,
     GET_ALL_LIQUIDITY,

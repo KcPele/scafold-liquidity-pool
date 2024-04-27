@@ -43,7 +43,10 @@ contract Scaffold {
 		address _to,
 		uint256 _value
 	) public returns (bool success) {
-		require(balanceOf[msg.sender] >= _value, "");
+		require(
+			balanceOf[msg.sender] >= _value,
+			"value must be less than balance"
+		);
 		inc();
 		balanceOf[msg.sender] -= _value;
 		balanceOf[_to] += _value;
@@ -74,8 +77,11 @@ contract Scaffold {
 		address _to,
 		uint256 _value
 	) public returns (bool success) {
-		require(_value <= balanceOf[_from]);
-		require(_value <= allowance[_from][msg.sender]);
+		require(_value <= balanceOf[_from], "value must be less than balance");
+		require(
+			_value <= allowance[_from][msg.sender],
+			"value must be less than allowed balance"
+		);
 
 		balanceOf[_from] -= _value;
 		balanceOf[_to] += _value;

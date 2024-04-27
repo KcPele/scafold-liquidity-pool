@@ -20,13 +20,17 @@ contract ICOScaffold {
 	}
 
 	function buyTokens(uint256 _numberOfTokens) public payable {
-		require(msg.value == multiply(_numberOfTokens, tokenPrice));
-		require(tokenContract.balanceOf(address(this)) >= _numberOfTokens);
 		require(
-			tokenContract.transfer(
-				msg.sender,
-				_numberOfTokens * 1000000000000000000
-			)
+			msg.value >= multiply(_numberOfTokens, tokenPrice),
+			"value sent must be greater than or equal to the token bought"
+		);
+		require(
+			tokenContract.balanceOf(address(this)) >= _numberOfTokens,
+			"token contract balance not enough"
+		);
+		require(
+			tokenContract.transfer(msg.sender, _numberOfTokens),
+			"transfer not successfull"
 		);
 
 		tokensSold += _numberOfTokens;
